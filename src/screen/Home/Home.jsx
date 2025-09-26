@@ -7,6 +7,32 @@ const Home = () => {
   const insets = useSafeAreaInsets();
   const HEADER_HEIGHT = Platform.OS === 'ios' ? 44 : 56;
   const totalHeight = HEADER_HEIGHT + insets.top;
+  const [data, setData] = React.useState([
+    {
+      id: 1,
+      confidential: 'Private',
+      type: 'Team Meeting',
+      topic: 'Yearly Meeting 2025',
+      host: 'Mr. Abu',
+      datetime: '25 Jan 2025, 2:25 pm',
+    },
+    {
+      id: 2,
+      confidential: 'Public',
+      type: 'Interview',
+      topic: 'Interview for HR Position',
+      host: 'Ms. Jacqline',
+      datetime: '18 Jan 2025, 10:00 am',
+    },
+    {
+      id: 3,
+      confidential: 'Public',
+      type: 'Consulting Meeting',
+      topic: 'AI Conference',
+      host: 'Mr. Jackson',
+      datetime: '12 Jan 2025, 12:25 pm',
+    },
+  ]);
 
   return (
     <View style={{flex: 1, backgroundColor: 'white'}}>
@@ -92,67 +118,100 @@ const Home = () => {
             <Icon name="arrow-forward" size={14} color="#2F4F4F" />
           </TouchableOpacity>
         </View>
-        <View
-          style={{borderWidth: 1, borderRadius: 10, borderColor: '#D9D9D9'}}>
-          <View
-            style={{
-              backgroundColor: '#7BB3AF',
-              paddingVertical: 10,
-              paddingHorizontal: 20,
-              borderTopLeftRadius: 10,
-              borderTopRightRadius: 10,
-              flexDirection: 'row',
-              alignItems: 'center',
-              justifyContent: 'space-between',
-            }}>
+        <View style={{gap: 10}}>
+          {data.map(meeting => (
             <View
+              key={meeting.id}
               style={{
-                justifyContent: 'center',
-                alignItems: 'center',
-                flexDirection: 'row',
-                gap: 10,
-              }}>
-              <Icon name="meeting-room" size={25} color="white" />
-              <Text style={{fontWeight: 700, fontSize: 14, color: 'white'}}>
-                Team Meeting
-              </Text>
-            </View>
-            <View
-              style={{
-                backgroundColor: '#73C29F',
-                width: 65,
-                alignItems: 'center',
-                height: 25,
-                justifyContent: 'center',
+                borderWidth: 1,
                 borderRadius: 10,
+                borderColor: '#D9D9D9',
               }}>
-              <Text style={{fontSize: 12, color: 'white'}}>Private</Text>
+              <View
+                style={{
+                  backgroundColor:
+                    meeting.type === 'Team Meeting'
+                      ? '#7BB3AF'
+                      : meeting.type === 'Interview'
+                      ? '#D8A7B1'
+                      : '#DFEFEE',
+                  paddingVertical: 10,
+                  paddingHorizontal: 20,
+                  borderTopLeftRadius: 10,
+                  borderTopRightRadius: 10,
+                  flexDirection: 'row',
+                  alignItems: 'center',
+                  justifyContent: 'space-between',
+                }}>
+                <View
+                  style={{
+                    justifyContent: 'center',
+                    alignItems: 'center',
+                    flexDirection: 'row',
+                    gap: 10,
+                  }}>
+                  <Icon
+                    name="meeting-room"
+                    size={25}
+                    color={
+                      meeting.type === 'Consulting Meeting'
+                        ? '#2F4F4F'
+                        : 'white'
+                    }
+                  />
+                  <Text
+                    style={{
+                      fontWeight: 700,
+                      fontSize: 14,
+                      color:
+                        meeting.type === 'Consulting Meeting'
+                          ? '#2F4F4F'
+                          : 'white',
+                    }}>
+                    {meeting.type}
+                  </Text>
+                </View>
+                <View
+                  style={{
+                    backgroundColor:
+                      meeting.confidential === 'Public' ? '#73C29F' : '#D97A7A',
+                    width: 65,
+                    alignItems: 'center',
+                    height: 25,
+                    justifyContent: 'center',
+                    borderRadius: 10,
+                  }}>
+                  <Text style={{fontSize: 12, color: 'white'}}>
+                    {meeting.confidential}
+                  </Text>
+                </View>
+              </View>
+              <View
+                style={{
+                  paddingVertical: 10,
+                  paddingHorizontal: 20,
+                  borderBottomLeftRadius: 10,
+                  borderBottomRightRadius: 10,
+                  backgroundColor: 'white',
+                  flexDirection: 'row',
+                  alignItems: 'center',
+                }}>
+                <View style={{flex: 1, gap: 5}}>
+                  <Text>Topic: {meeting.topic}</Text>
+                  <Text>Host: {meeting.host}</Text>
+                  <Text>Date & Time: {meeting.datetime}</Text>
+                </View>
+                <TouchableOpacity
+                  style={{
+                    backgroundColor: '#2F4F4F',
+                    padding: 5,
+                    borderRadius: 20,
+                  }}>
+                  <Icon name="visibility" size={22} color="white" />
+                </TouchableOpacity>
+              </View>
             </View>
-          </View>
-          <View
-            style={{
-              paddingVertical: 10,
-              paddingHorizontal: 20,
-              borderBottomLeftRadius: 10,
-              borderBottomRightRadius: 10,
-              backgroundColor: 'white',
-              flexDirection: 'row',
-              alignItems: 'center',
-            }}>
-            <View style={{flex: 1, gap: 5}}>
-              <Text>Topic: Yearly Meeting 2025</Text>
-              <Text>Host: Mr.Abu</Text>
-              <Text>Date & Time: 25 Jan 2025, 2:25 pm</Text>
-            </View>
-            <TouchableOpacity
-              style={{
-                backgroundColor: '#2F4F4F',
-                padding: 5,
-                borderRadius: 20,
-              }}>
-              <Icon name="visibility" size={22} color="white" />
-            </TouchableOpacity>
-          </View>
+          ))}
         </View>
       </View>
     </View>
