@@ -120,7 +120,7 @@ const Home = () => {
         </View>
         <View style={{gap: 10}}>
           {data.map(meeting => (
-            <View
+            <TouchableOpacity
               key={meeting.id}
               style={{
                 borderWidth: 1,
@@ -201,16 +201,16 @@ const Home = () => {
                   <Text>Host: {meeting.host}</Text>
                   <Text>Date & Time: {meeting.datetime}</Text>
                 </View>
-                <TouchableOpacity
+                <View
                   style={{
                     backgroundColor: '#2F4F4F',
                     padding: 5,
                     borderRadius: 20,
                   }}>
                   <Icon name="visibility" size={22} color="white" />
-                </TouchableOpacity>
+                </View>
               </View>
-            </View>
+            </TouchableOpacity>
           ))}
         </View>
       </View>
