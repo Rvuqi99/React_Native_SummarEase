@@ -1,4 +1,4 @@
-import {View, Text} from 'react-native';
+import {Appearance} from 'react-native';
 import React from 'react';
 import {createNativeStackNavigator} from '@react-navigation/native-stack';
 import {NavigationContainer} from '@react-navigation/native';
@@ -7,6 +7,14 @@ import MainMenu from './src/screen/MainMenu';
 const Stack = createNativeStackNavigator();
 
 const App = () => {
+  React.useEffect(() => {
+    const init = async () => {
+      Appearance.setColorScheme('light');
+    };
+
+    init();
+  }, []);
+
   return (
     <NavigationContainer>
       <Stack.Navigator initialRouteName="MainMenu">

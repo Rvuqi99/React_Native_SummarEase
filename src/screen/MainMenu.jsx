@@ -45,9 +45,9 @@ const MainMenu = () => {
           if (rn === home) {
             icon = 'home';
           } else if (rn === meeting) {
-            icon = 'view-module';
+            icon = 'history';
           } else if (rn === recording) {
-            icon = 'mail';
+            icon = 'library-music';
           } else if (rn === more) {
             icon = 'more-horiz';
           }
@@ -72,6 +72,11 @@ const MainMenu = () => {
         component={MainHome}
         options={{
           title: 'Home',
+          headerShown: false,
+          tabBarLabelStyle: {
+            paddingBottom: 20,
+            fontSize: 13,
+          },
         }}
       />
       <Tab.Screen
@@ -79,6 +84,11 @@ const MainMenu = () => {
         component={MainMeeting}
         options={{
           title: 'Meetings',
+          headerShown: false,
+          tabBarLabelStyle: {
+            paddingBottom: 20,
+            fontSize: 13,
+          },
         }}
       />
       <Tab.Screen
@@ -86,6 +96,11 @@ const MainMenu = () => {
         component={MainRecording}
         options={{
           title: 'Recordings',
+          headerShown: false,
+          tabBarLabelStyle: {
+            paddingBottom: 20,
+            fontSize: 13,
+          },
         }}
       />
       <Tab.Screen
@@ -93,6 +108,11 @@ const MainMenu = () => {
         component={MainMore}
         options={{
           title: 'More',
+          headerShown: false,
+          tabBarLabelStyle: {
+            paddingBottom: 20,
+            fontSize: 13,
+          },
         }}
       />
     </Tab.Navigator>

@@ -1,11 +1,17 @@
-import {View, Text} from 'react-native';
 import React from 'react';
+import {createNativeStackNavigator} from '@react-navigation/native-stack';
+import Meetings from './Meetings';
 
+const MainMeetingStack = createNativeStackNavigator();
 const MainMeeting = () => {
   return (
-    <View>
-      <Text>MainMeeting</Text>
-    </View>
+    <MainMeetingStack.Navigator initialRouteName="Meetings">
+      <MainMeetingStack.Screen
+        name="Meetings"
+        component={Meetings}
+        options={{headerStyle: {backgroundColor: 'red'}}}
+      />
+    </MainMeetingStack.Navigator>
   );
 };
 
