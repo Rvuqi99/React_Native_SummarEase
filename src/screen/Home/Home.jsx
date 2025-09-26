@@ -94,7 +94,8 @@ const Home = ({navigation}) => {
               justifyContent: 'center',
               alignItems: 'center',
               borderRadius: 10,
-            }}>
+            }}
+            onPress={() => navigation.navigate('JoinMeeting')}>
             <View style={{position: 'absolute', left: 20}}>
               <Icon name="add-box" color="#2F4F4F" size={26} />
             </View>

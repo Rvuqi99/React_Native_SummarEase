@@ -4,6 +4,7 @@ import {createNativeStackNavigator} from '@react-navigation/native-stack';
 import {NavigationContainer} from '@react-navigation/native';
 import MainMenu from './src/screen/MainMenu';
 import CreateMeeting from './src/screen/Home/CreateMeeting';
+import JoinMeeting from './src/screen/JoinMeeting/JoinMeeting';
 
 const Stack = createNativeStackNavigator();
 
@@ -29,6 +30,19 @@ const App = () => {
           component={CreateMeeting}
           options={{
             title: 'Create Meeting',
+            headerTitleAlign: 'center',
+            headerStyle: {
+              backgroundColor: '#7BB3AF',
+            },
+            headerTitleStyle: {fontSize: 20, fontWeight: 500, color: 'white'},
+            headerTintColor: 'white',
+          }}
+        />
+        <Stack.Screen
+          name="JoinMeeting"
+          component={JoinMeeting}
+          options={{
+            title: 'Join Meeting',
             headerTitleAlign: 'center',
             headerStyle: {
               backgroundColor: '#7BB3AF',
