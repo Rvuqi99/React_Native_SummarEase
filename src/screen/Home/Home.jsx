@@ -3,7 +3,7 @@ import React from 'react';
 import {useSafeAreaInsets} from 'react-native-safe-area-context';
 import {Icon} from '@rneui/themed';
 
-const Home = () => {
+const Home = ({navigation}) => {
   const insets = useSafeAreaInsets();
   const HEADER_HEIGHT = Platform.OS === 'ios' ? 44 : 56;
   const totalHeight = HEADER_HEIGHT + insets.top;
@@ -75,7 +75,8 @@ const Home = () => {
               justifyContent: 'center',
               alignItems: 'center',
               borderRadius: 10,
-            }}>
+            }}
+            onPress={() => navigation.navigate('CreateMeeting')}>
             <View style={{position: 'absolute', left: 20}}>
               <Icon name="mic" color="white" size={26} />
             </View>
@@ -197,9 +198,15 @@ const Home = () => {
                   alignItems: 'center',
                 }}>
                 <View style={{flex: 1, gap: 5}}>
-                  <Text>Topic: {meeting.topic}</Text>
-                  <Text>Host: {meeting.host}</Text>
-                  <Text>Date & Time: {meeting.datetime}</Text>
+                  <Text style={{color: 'black', fontSize: 14}}>
+                    Topic: {meeting.topic}
+                  </Text>
+                  <Text style={{color: 'black', fontSize: 14}}>
+                    Host: {meeting.host}
+                  </Text>
+                  <Text style={{color: 'black', fontSize: 14}}>
+                    Date & Time: {meeting.datetime}
+                  </Text>
                 </View>
                 <View
                   style={{
