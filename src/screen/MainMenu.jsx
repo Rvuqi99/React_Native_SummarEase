@@ -4,14 +4,17 @@ import {createBottomTabNavigator} from '@react-navigation/bottom-tabs';
 import {useSafeAreaInsets} from 'react-native-safe-area-context';
 import {Icon} from '@rneui/themed';
 import MainHome from './Home/MainHome';
+import MainMeeting from './Meetings/MainMeeting';
+import MainRecording from './Recordings/MainRecording';
+import MainMore from './More/MainMore';
 
 const Tab = createBottomTabNavigator();
 const MainMenu = () => {
   const insets = useSafeAreaInsets();
 
   const home = 'MainHome';
-  const meetings = 'MainMeetings';
-  const recordings = 'MainRecordings';
+  const meeting = 'MainMeeting';
+  const recording = 'MainRecording';
   const more = 'MainMore';
 
   // Base height of your tab bar (calculated from your code)
@@ -33,7 +36,7 @@ const MainMenu = () => {
           paddingTop: 8,
           fontSize: 12,
         },
-        tabBarActiveTintColor: '#228b22',
+        tabBarActiveTintColor: '#6DA9A3',
         tabBarInactiveTintColor: '#7b7b7b',
         tabBarIcon: ({color}) => {
           let icon;
@@ -41,9 +44,9 @@ const MainMenu = () => {
 
           if (rn === home) {
             icon = 'home';
-          } else if (rn === modules) {
+          } else if (rn === meeting) {
             icon = 'view-module';
-          } else if (rn === inbox) {
+          } else if (rn === recording) {
             icon = 'mail';
           } else if (rn === more) {
             icon = 'more-horiz';
@@ -69,11 +72,27 @@ const MainMenu = () => {
         component={MainHome}
         options={{
           title: 'Home',
-          headerShown: false,
-          tabBarLabelStyle: {
-            paddingBottom: 20,
-            fontSize: 13,
-          },
+        }}
+      />
+      <Tab.Screen
+        name={meeting}
+        component={MainMeeting}
+        options={{
+          title: 'Meetings',
+        }}
+      />
+      <Tab.Screen
+        name={recording}
+        component={MainRecording}
+        options={{
+          title: 'Recordings',
+        }}
+      />
+      <Tab.Screen
+        name={more}
+        component={MainMore}
+        options={{
+          title: 'More',
         }}
       />
     </Tab.Navigator>
