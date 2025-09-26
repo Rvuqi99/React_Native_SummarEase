@@ -3,8 +3,6 @@ import React from 'react';
 import {useSafeAreaInsets} from 'react-native-safe-area-context';
 import {Icon} from '@rneui/themed';
 
-const screenWidth = Dimensions.get('window').width;
-
 const Meeting = ({navigation}) => {
   const insets = useSafeAreaInsets();
   const HEADER_HEIGHT = Platform.OS === 'ios' ? 44 : 56;
@@ -15,11 +13,36 @@ const Meeting = ({navigation}) => {
     {id: 3, isHost: false, name: 'Faizal', color: '#D6B95D'},
     {id: 4, isHost: false, name: 'Shanti', color: '#3E5F8A'},
   ]);
+  const [isRecording, setIsRecording] = React.useState(false);
+  const [timer, setTimer] = React.useState(0);
+  const intervalRef = React.useRef(null);
 
   const baseHeight = Math.min(
     Math.max(Dimensions.get('window').width * 0.2, 60),
     80,
   );
+
+  const formatTime = time => {
+    const getSeconds = `0${time % 60}`.slice(-2);
+    const minutes = Math.floor(time / 60);
+    const getMinutes = `0${minutes % 60}`.slice(-2);
+    const getHours = `0${Math.floor(time / 3600)}`.slice(-2);
+
+    return `${getHours}:${getMinutes}:${getSeconds}`;
+  };
+
+  React.useEffect(() => {
+    if (isRecording) {
+      intervalRef.current = setInterval(() => {
+        setTimer(prevTime => prevTime + 1);
+      }, 1000);
+    } else {
+      clearInterval(intervalRef.current);
+    }
+
+    // Cleanup on unmount
+    return () => clearInterval(intervalRef.current);
+  }, [isRecording]);
 
   return (
     <View style={{flex: 1, backgroundColor: '#2F4F4F'}}>
@@ -57,13 +80,14 @@ const Meeting = ({navigation}) => {
       </View>
       <View
         style={{
+          display: isRecording ? 'flex' : 'none',
           height: 40,
           backgroundColor: '#7BB3AF',
           alignItems: 'center',
           justifyContent: 'center',
         }}>
         <Text style={{fontSize: 15, fontWeight: 500, color: 'white'}}>
-          Duration: 00:00:00
+          Duration: {formatTime(timer)}
         </Text>
       </View>
       <View
@@ -175,8 +199,9 @@ const Meeting = ({navigation}) => {
             borderRadius: 5,
             marginBottom: insets.bottom + 20,
             justifyContent: 'center',
-          }}>
-          <Icon name="mic" size={27} color="white" />
+          }}
+          onPress={() => setIsRecording(true)}>
+          <Icon name={!isRecording ? 'mic' : 'stop'} size={27} color="white" />
           <Text
             style={{
               fontSize: 13,
@@ -184,7 +209,7 @@ const Meeting = ({navigation}) => {
               marginTop: 4,
               fontWeight: 500,
             }}>
-            Start
+            {!isRecording ? 'Start' : 'Stop/End'}
           </Text>
         </TouchableOpacity>
         <TouchableOpacity
