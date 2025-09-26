@@ -16,6 +16,7 @@ const CreateMeeting = ({navigation}) => {
     type: null,
     topic: '',
     speaker: null,
+    name: '',
   });
   const [confidentiality, setConfidentiality] = React.useState([
     {id: 1, name: 'Public'},
@@ -181,6 +182,29 @@ const CreateMeeting = ({navigation}) => {
                 placeholderTextColor="#747688"
                 onChangeText={txt => updatedFormData({topic: txt})}
                 value={formData.topic}
+              />
+            </View>
+            <View style={{gap: 10}}>
+              <Text style={{fontSize: 17, color: 'black', fontWeight: 500}}>
+                Your Name
+              </Text>
+              <TextInput
+                style={{
+                  flex: 1,
+                  color: 'black',
+                  fontSize: 15,
+                  borderWidth: 1,
+                  borderRadius: 10,
+                  borderColor: '#d9d9d9',
+                  padding: 20,
+                  textAlign: formData.name === '' ? 'center' : 'auto',
+                }}
+                placeholder={'Enter Your Display Name'}
+                autoCapitalize="none"
+                autoCorrect={false}
+                placeholderTextColor="#747688"
+                onChangeText={txt => updatedFormData({name: txt})}
+                value={formData.name}
               />
             </View>
             <View style={{gap: 10}}>
