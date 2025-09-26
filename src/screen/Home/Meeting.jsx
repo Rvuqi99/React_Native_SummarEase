@@ -44,6 +44,14 @@ const Meeting = ({navigation}) => {
     return () => clearInterval(intervalRef.current);
   }, [isRecording]);
 
+  const handlePressRecordButton = async () => {
+    if (!isRecording) {
+      setIsRecording(true);
+    } else {
+      console.log('Hi');
+    }
+  };
+  
   return (
     <View style={{flex: 1, backgroundColor: '#2F4F4F'}}>
       <View
@@ -200,7 +208,7 @@ const Meeting = ({navigation}) => {
             marginBottom: insets.bottom + 20,
             justifyContent: 'center',
           }}
-          onPress={() => setIsRecording(true)}>
+          onPress={() => handlePressRecordButton()}>
           <Icon name={!isRecording ? 'mic' : 'stop'} size={27} color="white" />
           <Text
             style={{
