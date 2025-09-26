@@ -1,4 +1,11 @@
-import {View, Text, Platform, TouchableOpacity, Dimensions} from 'react-native';
+import {
+  View,
+  Text,
+  Platform,
+  TouchableOpacity,
+  Dimensions,
+  Modal,
+} from 'react-native';
 import React from 'react';
 import {useSafeAreaInsets} from 'react-native-safe-area-context';
 import {Icon} from '@rneui/themed';
@@ -16,6 +23,7 @@ const Meeting = ({navigation}) => {
   const [isRecording, setIsRecording] = React.useState(false);
   const [timer, setTimer] = React.useState(0);
   const intervalRef = React.useRef(null);
+  const [openEndModal, setOpenEndModal] = React.useState(false);
 
   const baseHeight = Math.min(
     Math.max(Dimensions.get('window').width * 0.2, 60),
@@ -48,10 +56,10 @@ const Meeting = ({navigation}) => {
     if (!isRecording) {
       setIsRecording(true);
     } else {
-      console.log('Hi');
+      setOpenEndModal(true);
     }
   };
-  
+
   return (
     <View style={{flex: 1, backgroundColor: '#2F4F4F'}}>
       <View
@@ -291,6 +299,79 @@ const Meeting = ({navigation}) => {
           </Text>
         </TouchableOpacity>
       </View>
+      <Modal
+        animationType="fade"
+        transparent={true} // makes background see-through
+        visible={openEndModal}
+        onRequestClose={() => setOpenEndModal(false)} // required for Android back button
+      >
+        <View
+          style={{
+            flex: 1,
+            justifyContent: 'center',
+            alignItems: 'center',
+            backgroundColor: 'rgba(0,0,0,0.5)',
+          }}>
+          <View
+            style={{
+              width: '80%',
+              padding: 20,
+              backgroundColor: 'white',
+              borderRadius: 10,
+            }}>
+            <Text
+              style={{
+                marginBottom: 10,
+                fontSize: 17,
+                fontWeight: 700,
+                color: 'black',
+              }}>
+              Confirm End Meeting?
+            </Text>
+            <Text
+              style={{
+                marginBottom: 30,
+                fontSize: 15,
+                color: 'black',
+              }}>
+              Ending the meeting will stop the recording session in progress. Do
+              you really want to end the meeting?
+            </Text>
+            <View style={{flexDirection: 'row', gap: 10}}>
+              <TouchableOpacity
+                style={{
+                  backgroundColor: '#DFEFEE',
+                  padding: 20,
+                  borderRadius: 10,
+                  flex: 1,
+                  alignItems: 'center',
+                  justifyContent: 'center',
+                }}
+                onPress={() => setOpenEndModal(false)}>
+                <Text
+                  style={{color: '#2F4F4F', fontWeight: 'bold', fontSize: 16}}>
+                  Cancel
+                </Text>
+              </TouchableOpacity>
+              <TouchableOpacity
+                style={{
+                  backgroundColor: '#7BB3AF',
+                  padding: 20,
+                  borderRadius: 10,
+                  flex: 1,
+                  alignItems: 'center',
+                  justifyContent: 'center',
+                }}
+                onPress={() => setOpenEndModal(false)}>
+                <Text
+                  style={{color: 'white', fontWeight: 'bold', fontSize: 16}}>
+                  Confirm
+                </Text>
+              </TouchableOpacity>
+            </View>
+          </View>
+        </View>
+      </Modal>
     </View>
   );
 };
