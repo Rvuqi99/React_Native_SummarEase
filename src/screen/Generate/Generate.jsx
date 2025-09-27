@@ -70,7 +70,7 @@ const Generate = ({navigation}) => {
           justifyContent: 'center',
           marginTop: 10,
         }}
-        onPress={() => navigation.navigate('Meeting')}>
+        onPress={() => navigation.navigate('Summary')}>
         <Text style={{fontWeight: 700, color: 'white', fontSize: 16}}>
           NEXT
         </Text>
