@@ -135,9 +135,31 @@ const Recording = ({navigation}) => {
   return (
     <View style={{flex: 1, backgroundColor: 'white'}}>
       <View style={{flex: 1, padding: 20}}>
-        <Text style={{color: 'black', fontWeight: 700, fontSize: 17}}>
-          Transcript
-        </Text>
+        <View
+          style={{
+            flexDirection: 'row',
+            justifyContent: 'space-between',
+            alignItems: 'center',
+          }}>
+          <Text style={{color: 'black', fontWeight: 700, fontSize: 17}}>
+            Transcript
+          </Text>
+          <TouchableOpacity
+            style={{
+              flexDirection: 'row',
+              gap: 10,
+              alignItems: 'center',
+              justifyContent: 'center',
+              padding: 10,
+              backgroundColor: '#DFEFEE',
+              borderRadius: 10,
+            }}>
+            <Icon name="download" size={17} color="#2F4F4F" />
+            <Text style={{fontSize: 12, fontWeight: 700, color: '#2F4F4F'}}>
+              Download
+            </Text>
+          </TouchableOpacity>
+        </View>
         <View
           style={{
             backgroundColor: 'white',
