@@ -111,7 +111,7 @@ const UploadRecording = ({navigation}) => {
             }}>
             <ActivityIndicator size="large" color="#7BB3AF" />
             <Text style={{fontSize: 15, fontWeight: 500, color: 'black'}}>
-              Transcripting...
+              Transcribing...
             </Text>
           </View>
         </View>

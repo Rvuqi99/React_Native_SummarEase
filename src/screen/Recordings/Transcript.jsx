@@ -2,7 +2,7 @@ import {View, Text, TouchableOpacity, ScrollView} from 'react-native';
 import React from 'react';
 import {Icon} from '@rneui/themed';
 
-const Transcript = () => {
+const Transcript = ({navigation}) => {
   const [isPlaying, setIsPlaying] = React.useState(false);
   const [currentTime, setCurrentTime] = React.useState(0);
   const intervalRef = React.useRef(null);

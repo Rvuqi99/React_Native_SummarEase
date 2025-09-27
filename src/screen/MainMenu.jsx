@@ -25,7 +25,7 @@ const MainMenu = () => {
 
   return (
     <Tab.Navigator
-      initialRouteName={meeting}
+      initialRouteName={home}
       screenOptions={({route}) => ({
         tabBarStyle: {
           height: baseHeight + insets.bottom, // 👈 height includes safe area
