@@ -10,7 +10,15 @@ const MainRecording = () => {
       <MainRecordingStack.Screen
         name="Recordings"
         component={Recordings}
-        options={{headerStyle: {backgroundColor: 'red'}}}
+        options={{
+          title: 'Recordings',
+          headerTitleAlign: 'center',
+          headerStyle: {
+            backgroundColor: '#7BB3AF',
+          },
+          headerTitleStyle: {fontSize: 20, fontWeight: 500, color: 'white'},
+          headerTintColor: 'white',
+        }}
       />
     </MainRecordingStack.Navigator>
   );

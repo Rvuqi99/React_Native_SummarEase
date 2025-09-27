@@ -9,7 +9,15 @@ const MainMeeting = () => {
       <MainMeetingStack.Screen
         name="Meetings"
         component={Meetings}
-        options={{headerStyle: {backgroundColor: 'red'}}}
+        options={{
+          title: 'Meetings',
+          headerTitleAlign: 'center',
+          headerStyle: {
+            backgroundColor: '#7BB3AF',
+          },
+          headerTitleStyle: {fontSize: 20, fontWeight: 500, color: 'white'},
+          headerTintColor: 'white',
+        }}
       />
     </MainMeetingStack.Navigator>
   );
