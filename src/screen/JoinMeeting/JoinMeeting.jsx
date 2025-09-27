@@ -121,7 +121,8 @@ const JoinMeeting = ({navigation}) => {
                 alignItems: 'center',
                 justifyContent: 'center',
                 marginTop: 50,
-              }}>
+              }}
+              onPress={() => navigation.navigate('Meeting')}>
               <Text style={{fontWeight: 700, color: 'white', fontSize: 16}}>
                 JOIN
               </Text>

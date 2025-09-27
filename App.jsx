@@ -6,6 +6,7 @@ import MainMenu from './src/screen/MainMenu';
 import CreateMeeting from './src/screen/Home/CreateMeeting';
 import JoinMeeting from './src/screen/JoinMeeting/JoinMeeting';
 import Meeting from './src/screen/Home/Meeting';
+import Recording from './src/screen/Home/Recording';
 
 const Stack = createNativeStackNavigator();
 
@@ -56,6 +57,20 @@ const App = () => {
           name="Meeting"
           component={Meeting}
           options={{headerShown: false}}
+        />
+        <Stack.Screen
+          name="Recording"
+          component={Recording}
+          options={{
+            title: 'Recording',
+            headerTitleAlign: 'center',
+            headerStyle: {
+              backgroundColor: '#7BB3AF',
+            },
+            headerTitleStyle: {fontSize: 20, fontWeight: 500, color: 'white'},
+            headerTintColor: 'white',
+            headerBackVisible: false,
+          }}
         />
       </Stack.Navigator>
     </NavigationContainer>

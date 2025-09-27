@@ -362,7 +362,10 @@ const Meeting = ({navigation}) => {
                   alignItems: 'center',
                   justifyContent: 'center',
                 }}
-                onPress={() => setOpenEndModal(false)}>
+                onPress={() => {
+                  setOpenEndModal(false);
+                  navigation.navigate('Recording');
+                }}>
                 <Text
                   style={{color: 'white', fontWeight: 'bold', fontSize: 16}}>
                   Confirm
