@@ -6,93 +6,9 @@ const Transcript = () => {
   const [isPlaying, setIsPlaying] = React.useState(false);
   const [currentTime, setCurrentTime] = React.useState(0);
   const intervalRef = React.useRef(null);
-  const [dialog, setDialog] = React.useState([
-    {
-      id: 1,
-      time: '00:00',
-      isHost: true,
-      name: 'Richard',
-      color: '#7BB3AF',
-      dialog:
-        'Good morning, everyone. Thanks for joining today’s meeting. Let’s get started. First, a quick roll call—Amy, are you here?',
-    },
-    {
-      id: 2,
-      time: '00:03',
-      isHost: false,
-      name: 'Amy',
-      color: '#FF6F61',
-      dialog: 'Yes, Richard. Good morning!',
-    },
-    {
-      id: 3,
-      time: '00:05',
-      isHost: true,
-      name: 'Richard',
-      color: '#7BB3AF',
-      dialog: 'Great. Faizal?',
-    },
-    {
-      id: 4,
-      time: '00:08',
-      isHost: false,
-      name: 'Faizal',
-      color: '#D6B95D',
-      dialog: 'Present. Morning, everyone.',
-    },
-    {
-      id: 5,
-      time: '00:10',
-      isHost: true,
-      name: 'Richard',
-      color: '#7BB3AF',
-      dialog: 'And Shanti?',
-    },
-    {
-      id: 6,
-      time: '00:12',
-      isHost: false,
-      name: 'Shanti',
-      color: '#3E5F8A',
-      dialog: 'Here! Good morning.',
-    },
-    {
-      id: 7,
-      time: '00:15',
-      isHost: true,
-      name: 'Richard',
-      color: '#7BB3AF',
-      dialog:
-        'Perfect. So today, I’d like to get a quick status update on our marketing campaign, identify any roadblocks, and align on next steps. Amy, could you start us off with a brief on the project ABC that we discussed last week',
-    },
-    {
-      id: 8,
-      time: '00:30',
-      isHost: false,
-      name: 'Amy',
-      color: '#FF6F61',
-      dialog:
-        'Absolutely. Last week, we finalized the social media calendar for October and started drafting copy for the new product launch emails. The design team also shared the first mockups, which we’re reviewing today. Engagement on our teaser posts has been stronger than expected — up 18% from the previous campaign.',
-    },
-    {
-      id: 9,
-      time: '00:15',
-      isHost: true,
-      name: 'Richard',
-      color: '#7BB3AF',
-      dialog:
-        'That’s encouraging. Are we on track to launch the full campaign by the 10th?',
-    },
-    {
-      id: 10,
-      time: '00:30',
-      isHost: false,
-      name: 'Amy',
-      color: '#FF6F61',
-      dialog:
-        'Mostly, yes. The only concern is around the video content — we’re still waiting on final approvals for the scripts. That could push us a day or two behind if not resolved soon.',
-    },
-  ]);
+  const [dialog, setDialog] = React.useState(
+    'So, um, I just wanted to record this quickly before I forget. I had a meeting this morning with the project leads, and honestly, it went better than expected. We reviewed the timeline for Phase 2, and there were a few concerns about the resource allocation, but nothing major. I also brought up the potential bottlenecks with the new API integration—specifically the authentication flow. I don’t think we can move forward until we get that clarified with the dev team. I’ve already sent an email to Carlos, so hopefully we’ll get a response by end of day. Oh—and I almost forgot—we need to finalize the presentation deck for Monday’s client review. I’m planning to work on it tonight after dinner. I’ll probably include the updated metrics from last week’s campaign, just to show the progress we`ve made. Anyway, just wanted to get all of that down before it slips my mind. I’ll check back in tomorrow if there are any updates.',
+  );
 
   const TOTAL_DURATION = 180;
 
@@ -172,79 +88,15 @@ const Transcript = () => {
           }}>
           <ScrollView>
             <View style={{flex: 1, gap: 10}}>
-              {dialog.map((item, index) => (
-                <View key={index} style={{flexDirection: 'row', gap: 20}}>
-                  <Text style={{color: '#979797', fontSize: 15}}>
-                    {item.time}
-                  </Text>
-                  <View style={{flex: 1, gap: 5}}>
-                    <View
-                      style={{
-                        flexDirection: 'row',
-                        alignItems: 'center',
-                        justifyContent: 'space-between',
-                      }}>
-                      <View
-                        style={{
-                          flexDirection: 'row',
-                          gap: 10,
-                          alignItems: 'center',
-                        }}>
-                        <View
-                          style={{
-                            backgroundColor: item.color,
-                            height: 20,
-                            width: 20,
-                            borderRadius: 10,
-                            alignItems: 'center',
-                            justifyContent: 'center',
-                          }}>
-                          <Text
-                            style={{
-                              fontSize: 15,
-                              color: 'white',
-                              fontWeight: 500,
-                            }}>
-                            {item.name.charAt(0).toUpperCase()}
-                          </Text>
-                        </View>
-                        <Text
-                          style={{
-                            fontSize: 15,
-                            color: 'black',
-                            fontWeight: 500,
-                          }}>
-                          {item.name}
-                        </Text>
-                        <View
-                          style={{
-                            display: item.isHost ? 'flex' : 'none',
-                            paddingVertical: 3,
-                            paddingHorizontal: 5,
-                            backgroundColor: '#979797',
-                            borderRadius: 5,
-                          }}>
-                          <Text
-                            style={{
-                              fontSize: 12,
-                              fontWeight: 500,
-                              color: 'white',
-                            }}>
-                            Host
-                          </Text>
-                        </View>
-                      </View>
-                      <TouchableOpacity>
-                        <Icon name="mode-edit" size={17} color="#979797" />
-                      </TouchableOpacity>
-                    </View>
-                    <Text
-                      style={{fontSize: 13, color: 'black', lineHeight: 20}}>
-                      {item.dialog}
-                    </Text>
-                  </View>
-                </View>
-              ))}
+              <Text
+                style={{
+                  fontSize: 15,
+                  color: 'black',
+                  flexWrap: 'wrap',
+                  flex: 1,
+                }}>
+                {dialog}
+              </Text>
             </View>
           </ScrollView>
         </View>
