@@ -7,6 +7,7 @@ import CreateMeeting from './src/screen/Home/CreateMeeting';
 import JoinMeeting from './src/screen/JoinMeeting/JoinMeeting';
 import Meeting from './src/screen/Home/Meeting';
 import Recording from './src/screen/Home/Recording';
+import Generate from './src/screen/Generate/Generate';
 
 const Stack = createNativeStackNavigator();
 
@@ -70,6 +71,19 @@ const App = () => {
             headerTitleStyle: {fontSize: 20, fontWeight: 500, color: 'white'},
             headerTintColor: 'white',
             headerBackVisible: false,
+          }}
+        />
+        <Stack.Screen
+          name="Generate"
+          component={Generate}
+          options={{
+            title: 'Generate',
+            headerTitleAlign: 'center',
+            headerStyle: {
+              backgroundColor: '#7BB3AF',
+            },
+            headerTitleStyle: {fontSize: 20, fontWeight: 500, color: 'white'},
+            headerTintColor: 'white',
           }}
         />
       </Stack.Navigator>

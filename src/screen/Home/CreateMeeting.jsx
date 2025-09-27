@@ -110,7 +110,6 @@ const CreateMeeting = ({navigation}) => {
                 placeholderStyle={{
                   fontSize: 15,
                   color: '#747688',
-                  // paddingVertical: 10,
                   textAlign: 'center',
                 }}
                 style={{

@@ -328,7 +328,8 @@ const Recording = ({navigation}) => {
             borderRadius: 10,
             alignItems: 'center',
             justifyContent: 'center',
-          }}>
+          }}
+          onPress={() => navigation.navigate('Generate')}>
           <Text style={{color: 'white', fontSize: 16, fontWeight: 700}}>
             Generate
           </Text>
