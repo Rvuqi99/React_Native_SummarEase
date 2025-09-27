@@ -263,7 +263,7 @@ const Recordings = ({navigation}) => {
             justifyContent: 'center',
             marginTop: 10,
           }}
-          onPress={() => navigation.navigate('Meeting')}>
+          onPress={() => navigation.navigate('UploadRecording')}>
           <Text style={{fontWeight: 700, color: 'white', fontSize: 16}}>
             UPLOAD RECORDING
           </Text>

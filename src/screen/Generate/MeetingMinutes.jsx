@@ -2,7 +2,7 @@ import {View, Text, TouchableOpacity, ScrollView} from 'react-native';
 import React from 'react';
 import {Icon} from '@rneui/themed';
 
-const Summary = ({navigation}) => {
+const MeetingMinutes = ({navigation}) => {
   return (
     <View style={{flex: 1, backgroundColor: 'white'}}>
       <View style={{flex: 1, padding: 20}}>
@@ -13,7 +13,7 @@ const Summary = ({navigation}) => {
             alignItems: 'center',
           }}>
           <Text style={{fontSize: 17, color: 'black', fontWeight: 500}}>
-            Summary (Team Meeting)
+            Meeting Minutes (Team Meeting)
           </Text>
           <TouchableOpacity
             style={{
@@ -331,4 +331,4 @@ const Summary = ({navigation}) => {
   );
 };
 
-export default Summary;
+export default MeetingMinutes;
