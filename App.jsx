@@ -11,6 +11,7 @@ import Generate from './src/screen/Generate/Generate';
 import MeetingMinutes from './src/screen/Generate/MeetingMinutes';
 import Transcript from './src/screen/Recordings/Transcript';
 import Summary from './src/screen/Generate/Summary';
+import ViewRecording from './src/screen/Recordings/ViewRecording';
 
 const Stack = createNativeStackNavigator();
 
@@ -120,6 +121,19 @@ const App = () => {
           component={Summary}
           options={{
             title: 'Summary',
+            headerTitleAlign: 'center',
+            headerStyle: {
+              backgroundColor: '#7BB3AF',
+            },
+            headerTitleStyle: {fontSize: 20, fontWeight: 500, color: 'white'},
+            headerTintColor: 'white',
+          }}
+        />
+        <Stack.Screen
+          name="ViewRecording"
+          component={ViewRecording}
+          options={{
+            title: 'View Recording',
             headerTitleAlign: 'center',
             headerStyle: {
               backgroundColor: '#7BB3AF',

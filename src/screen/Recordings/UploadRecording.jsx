@@ -4,6 +4,7 @@ import {
   TouchableOpacity,
   ActivityIndicator,
   Modal,
+  TextInput,
 } from 'react-native';
 import React from 'react';
 import {Icon} from '@rneui/themed';
@@ -11,9 +12,33 @@ import {Icon} from '@rneui/themed';
 const UploadRecording = ({navigation}) => {
   const [uploaded, setUploaded] = React.useState(false);
   const [visible, setVisible] = React.useState(false);
+  const [name, setName] = React.useState('');
 
   return (
     <View style={{flex: 1, backgroundColor: 'white', padding: 20, gap: 20}}>
+      <View style={{gap: 10}}>
+        <Text style={{fontSize: 17, color: 'black', fontWeight: 500}}>
+          Name
+        </Text>
+        <TextInput
+          style={{
+            height: 50,
+            paddingHorizontal: 20,
+            color: 'black',
+            fontSize: 15,
+            borderWidth: 1,
+            borderRadius: 10,
+            borderColor: '#d9d9d9',
+            textAlign: name === '' ? 'center' : 'auto',
+          }}
+          placeholder={'Enter Audio Name'}
+          autoCapitalize="none"
+          autoCorrect={false}
+          placeholderTextColor="#747688"
+          onChangeText={txt => setName(txt)}
+          value={name}
+        />
+      </View>
       <View style={{gap: 10}}>
         <Text style={{fontSize: 17, color: 'black', fontWeight: 500}}>
           Upload Your Recording

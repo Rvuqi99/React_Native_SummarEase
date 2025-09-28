@@ -14,21 +14,24 @@ const Recordings = ({navigation}) => {
   const [data1, setData1] = React.useState([
     {
       id: 1,
-      name: 'Yearly Meeting 2025.mp3',
+      name: 'Yearly Meeting 2025',
+      audioName: 'Yearly Meeting 2025.mp3',
       datetime: '25 Jan 2025, 2:25 pm',
       transcript:
         'The Yearly Meeting 2025 was held to review the company’s performance, set goals for the upcoming year, and discuss key strategic plans. All departments presented updates, and leadership outlined major initiatives for growth.',
     },
     {
       id: 2,
-      name: 'Interview for HR Position.wav',
+      name: 'Interview for HR Position',
+      audioName: 'Recording_12345678.wav',
       datetime: '18 Jan 2025, 10:00 am',
       transcript:
         'A candidate was interviewed for the HR position, focusing on their experience in recruitment, employee relations, and HR policies. The interview also assessed their communication skills and cultural fit within the company.',
     },
     {
       id: 3,
-      name: 'AI Conference.mp3',
+      name: 'AI Conference',
+      audioName: 'AI Conference.mp3',
       datetime: '12 Jan 2025, 12:25 pm',
       transcript:
         'The AI Conference brought together experts and enthusiasts to explore the latest trends in artificial intelligence. Topics included machine learning, ethical AI, and real-world applications across industries.',
@@ -103,7 +106,10 @@ const Recordings = ({navigation}) => {
                       borderWidth: 1,
                       borderRadius: 10,
                       borderColor: '#D9D9D9',
-                    }}>
+                    }}
+                    onPress={() =>
+                      navigation.navigate('ViewRecording', meeting)
+                    }>
                     <View
                       style={{
                         backgroundColor: '#DFEFEE',
@@ -129,7 +135,7 @@ const Recordings = ({navigation}) => {
                             fontSize: 14,
                             color: '#2F4F4F',
                           }}>
-                          Uploaded Recording
+                          {meeting.name}
                         </Text>
                       </View>
                     </View>
@@ -145,7 +151,7 @@ const Recordings = ({navigation}) => {
                       }}>
                       <View style={{flex: 1, gap: 5}}>
                         <Text style={{color: 'black', fontSize: 14}}>
-                          Name: {meeting.name}
+                          Audio Name: {meeting.audioName}
                         </Text>
                         <Text style={{color: 'black', fontSize: 14}}>
                           Date & Time: {meeting.datetime}
@@ -190,7 +196,8 @@ const Recordings = ({navigation}) => {
                     borderWidth: 1,
                     borderRadius: 10,
                     borderColor: '#D9D9D9',
-                  }}>
+                  }}
+                  onPress={() => navigation.navigate('ViewRecording', meeting)}>
                   <View
                     style={{
                       backgroundColor: '#DFEFEE',
@@ -216,7 +223,7 @@ const Recordings = ({navigation}) => {
                           fontSize: 14,
                           color: '#2F4F4F',
                         }}>
-                        Uploaded Recording
+                        {meeting.name}
                       </Text>
                     </View>
                   </View>
@@ -232,7 +239,7 @@ const Recordings = ({navigation}) => {
                     }}>
                     <View style={{flex: 1, gap: 5}}>
                       <Text style={{color: 'black', fontSize: 14}}>
-                        Name: {meeting.name}
+                        Audio Name: {meeting.audioName}
                       </Text>
                       <Text style={{color: 'black', fontSize: 14}}>
                         Date & Time: {meeting.datetime}

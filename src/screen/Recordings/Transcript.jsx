@@ -88,6 +88,11 @@ const Transcript = ({navigation}) => {
           }}>
           <ScrollView>
             <View style={{flex: 1, gap: 10}}>
+              <View style={{alignItems: 'flex-end', flex: 1}}>
+                <TouchableOpacity>
+                  <Icon name="mode-edit" size={17} color="#979797" />
+                </TouchableOpacity>
+              </View>
               <Text
                 style={{
                   fontSize: 15,
